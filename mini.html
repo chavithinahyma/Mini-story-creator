@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Epic Story Weaver | GitHub Project</title>
+    <style>
+        /* 1. ANIMATED DESIGN (CSS) */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+
+        body {
+            background: #0f0c29;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            overflow: hidden;
+        }
+
+        /* Glassmorphism Card Container */
+        .container {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            padding: 40px;
+            border-radius: 25px;
+            width: 550px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+            text-align: center;
+        }
+
+        h1 { font-size: 28px; margin-bottom: 20px; color: #00d2ff; text-shadow: 0 0 10px #00d2ff; }
+
+        .input-field { margin-bottom: 15px; text-align: left; }
+        label { font-size: 13px; color: #aaa; margin-left: 5px; }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            margin-top: 5px;
+            border-radius: 12px;
+            border: none;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            outline: none;
+        }
+
+        /* Extraordinary Neon Button */
+        button {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(45deg, #00d2ff, #928dab);
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 10px;
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.4);
+        }
+
+        button:hover { transform: scale(1.02); box-shadow: 0 0 25px #00d2ff; }
+
+        /* Story Output Box */
+        #storyBox {
+            margin-top: 25px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 15px;
+            line-height: 1.6;
+            text-align: left;
+            display: none; /* Initial ga hide chestunnam */
+            border-left: 4px solid #00d2ff;
+        }
+
+        .highlight { color: #00d2ff; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>✨ STORY WEAVER ✨</h1>
+        
+        <div class="input-field">
+            <label>Hero Name</label>
+            <input type="text" id="name" placeholder="E.g. Arjun, Leo...">
+        </div>
+
+        <div class="input-field">
+            <label>Choose World</label>
+            <select id="world">
+                <option value="Space">Space Galaxy 🚀</option>
+                <option value="Magic">Magic Kingdom 🏰</option>
+                <option value="Ocean">Deep Ocean 🌊</option>
+            </select>
+        </div>
+
+        <div class="input-field">
+            <label>What is the Goal?</label>
+            <input type="text" id="goal" placeholder="E.g. finding gold, saving a friend...">
+        </div>
+
+        <button onclick="generateStory()">CREATE MY LEGEND</button>
+
+        <div id="storyBox"></div>
+    </div>
+
+    <script>
+        function generateStory() {
+            const name = document.getElementById('name').value;
+            const world = document.getElementById('world').value;
+            const goal = document.getElementById('goal').value;
+            const box = document.getElementById('storyBox');
+
+            if(!name || !goal) {
+                alert("Please fill all details!");
+                return;
+            }
+
+            let finalStory = "";
+
+            // Simple If-Else Logic for Different Stories
+            if(world === "Space") {
+                finalStory = `In the year 3000, <span class="highlight">${name}</span> was a pilot in the <span class="highlight">Andromeda Galaxy</span>. 
+                One night, a mysterious signal appeared. <span class="highlight">${name}</span> decided to go on a mission for <b>${goal}</b>. 
+                After a huge battle with aliens, the mission was successful. The entire galaxy now knows the name of <span class="highlight">${name}</span>!`;
+            } 
+            else if(world === "Magic") {
+                finalStory = `Once upon a time in the <span class="highlight">Crystal Kingdom</span>, there lived a mage named <span class="highlight">${name}</span>. 
+                The kingdom was in danger, and <span class="highlight">${name}</span> had to start the quest of <b>${goal}</b>. 
+                Using an ancient magic wand, the dragons were defeated. Finally, by achieving <b>${goal}</b>, 
+                <span class="highlight">${name}</span> became the king of the realm!`;
+            } 
+            else {
+                finalStory = `Deep inside the <span class="highlight">Blue Abyss</span>, a brave diver named <span class="highlight">${name}</span> found a secret cave. 
+                The mission was very clear: <b>${goal}</b>. Even with giant sharks nearby, <span class="highlight">${name}</span> didn't stop. 
+                In the end, the treasure of <b>${goal}</b> was recovered, and <span class="highlight">${name}</span> became the hero of the seas.`;
+            }
+
+            // Displaying the story
+            box.innerHTML = finalStory;
+            box.style.display = "block";
+        }
+    </script>
+
+</body>
+</html>
+           
